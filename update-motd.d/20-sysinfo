@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Load color palette file
+source /etc/update-motd.d/theme
+
+# OUTPUT
