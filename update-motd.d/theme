@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Color          Foreground  Background
+# --------------------------------------
+# Black          30          40
+# Red            31          41
+# Green          32          42
+# Yellow         33          43
+# Blue           34          44
+# Magenta        35          45
+# Cyan           36          46
+# Light Gray     37          47
+# Gray           90          100
+# Light Red      91          101
+# Light Green    92          102
+# Light Yellow   93          103
+# Light Blue     94          104
+# Light Magenta  95          105
+# Light Cyan     96          106
+# White          97          107
+
+# Bold      1
+# Italic    3
+# Underline 4
+
+######## Color Function #########
+color() { echo "\e[$1m$2\e[0m"; }
+######## DO NOT TOUCH IT ########
+
+# Color Palette
+accent="91"
+secondary="92"
+title="1"
+muted="90"
+
+# Inverted version, manually assign
+inv_accent="101;97"
+inv_secondary="102;97"
+inv_title="1;47;90"
+inv_muted="100;37"
+
+# Bullet symbol
+bullet="*"
