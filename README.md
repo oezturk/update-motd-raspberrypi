@@ -47,12 +47,17 @@ To set up these scripts on your system, follow these steps:
    cd update-motd-raspberrypi
    ```
 
-2. **Copy Scripts to `/etc/update-motd.d/`**
+2. **Remove older scripts in `/etc/update-motd.d/`**
+   ```bash
+   sudo rm /etc/update-motd.d/*
+   ```
+
+3. **Copy Scripts to `/etc/update-motd.d/`**
    ```bash
    sudo cp update-motd.d/* /etc/update-motd.d/
    ```
 
-3. **Set Permissions**
+4. **Set Permissions**
    ```bash
    sudo chmod +x /etc/update-motd.d/*
    ```
