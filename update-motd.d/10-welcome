@@ -3,4 +3,13 @@
 # Load color palette file
 source /etc/update-motd.d/theme
 
+# Fetch and organize information
+device_model="$(color $inv_title " $(tr -d '\0' < /sys/firmware/devicetree/base/model) ")"
+kernel_release="$(color $inv_muted " $(uname -sr) ")"
+username="$(color $inv_accent " $(logname) ")"
+host="$(color $accent @$(hostname))"
+login_date="$(color $muted "at $(date)")"
+
 # OUTPUT
+echo -e "\n $device_model$kernel_release"
+echo -e "\n $bullet Welcome $username to $host $login_date\n"

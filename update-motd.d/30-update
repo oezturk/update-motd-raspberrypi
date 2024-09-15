@@ -3,4 +3,25 @@
 # Load color palette file
 source /etc/update-motd.d/theme
 
+# Fetch the number of upgradable packages
+upgrade_count="$(apt-get --just-print upgrade | grep -c "^Inst")"
+
+# Default colors
+upgrade_color="$muted"
+upgrade_inv_color="$inv_muted"
+
+s="s"
+
+# Adjust colors and pluralization and colors if there are upgradable packages
+if [ "$upgrade_count" -gt 0 ]; then
+
+    upgrade_color="$accent"
+    upgrade_inv_color="$inv_accent"
+
+    if [ "$upgrade_count" -eq 1 ]; then
+        s=""
+    fi
+fi
+
 # OUTPUT
+echo -e "\n $(color $upgrade_color "$bullet") $(color $upgrade_inv_color " $upgrade_count ") $(color $upgrade_color "package$s can be upgraded")\n"

@@ -3,4 +3,38 @@
 # Load color palette file
 source /etc/update-motd.d/theme
 
+# FIRST COLUMN
+last_login=$(last -n 1 -F | head -n 1 | awk '{print $4, $5, $6, $7, $8}' | xargs -I {} date -d "{}" +"%a %b %d %Y, %I:%M %p")
+info1="$(color $title "Last") $(color $muted "....")$(color $title ":") $(color $secondary "$last_login")"
+
+up_time="$(uptime -p | sed -e 's/^up //' -e 's/hour*/hr/' -e 's/minute*/min/' -e 's/,//g')"
+up_since="$(date -d "$(uptime -s)" +"%a %b %d %Y, %I:%M %p")"
+info3="$(color $title "Uptime") $(color $muted "..")$(color $title ":") $(color $secondary "$up_time") $(color $muted "$bullet $up_since")"
+
+disk_usage="$(df -h / | awk 'NR==2 {print $3 " / " $2}')"
+disk_free="$(df -h / | awk 'NR==2 {print $4}')"
+info5="$(color $title "Disk") $(color $muted "....")$(color $title ":") $(color $secondary "$disk_usage") $(color $muted "$bullet $disk_free")"
+
+memory_usage="$(free -h --si | awk '/^Mem:/ {print $3 " / " $2}')"
+memory_free="$(free -h --si | awk '/^Mem:/ {print $4}')"
+info7="$(color $title "Memory") $(color $muted "..")$(color $title ":") $(color $secondary "$memory_usage") $(color $muted "$bullet $memory_free")"
+
+# SECOND COLUMN
+temperature="$(vcgencmd measure_temp | awk -F"=" '{print $2}' | cut -d"'" -f1)"
+info2="$(color $title "Temp") $(color $muted "....")$(color $title ":") $(color $secondary "$temperature°C")"
+
+usage="$(cat /proc/stat | grep '^cpu ' | awk '{usage=($5*100)/($2+$3+$4+$5+$6+$7+$8+$9+$10); printf "%.1f\n", 100-usage}')"
+process_count="$(ps aux | wc -l)"
+info4="$(color $title "CPU") $(color $muted ".....")$(color $title ":") $(color $secondary "$usage%") $(color $muted "($process_count)")"
+
+user_count="$(users | wc -w)"
+info6="$(color $title "Users") $(color $muted "...")$(color $title ":") $(color $secondary "$user_count")"
+
+ip="$(hostname -I)"
+info8="$(color $title "IP") $(color $muted "......")$(color $title ":") $(color $secondary "$ip")"
+
 # OUTPUT
+echo -e "                                                            ${info2}\r   ${info1}"
+echo -e "                                                            ${info4}\r   ${info3}"
+echo -e "                                                            ${info6}\r   ${info5}"
+echo -e "                                                            ${info8}\r   ${info7}"
