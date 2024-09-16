@@ -1,27 +1,28 @@
 #!/bin/bash
 
-# Load color palette file
-source /etc/update-motd.d/theme
+# Load style
+source "/etc/update-motd.d/default"
+source "$DEFAULT_THEME"
 
-# Fetch the number of upgradable packages
-upgrade_count="$(apt-get --just-print upgrade | grep -c "^Inst")"
+# Fetch Information
+update_count="$(apt-get --just-print upgrade | grep -c "^Inst")"
 
 # Default colors
-upgrade_color="$muted"
-upgrade_inv_color="$inv_muted"
+update_color="$muted"
+update_inv_color="$inv_muted"
 
 s="s"
 
 # Adjust colors and pluralization and colors if there are upgradable packages
-if [ "$upgrade_count" -gt 0 ]; then
+if [ "$update_count" -gt 0 ]; then
 
-    upgrade_color="$accent"
-    upgrade_inv_color="$inv_accent"
+    update_color="$accent"
+    update_inv_color="$inv_accent"
 
-    if [ "$upgrade_count" -eq 1 ]; then
+    if [ "$update_count" -eq 1 ]; then
         s=""
     fi
 fi
 
 # OUTPUT
-echo -e "\n $(color $upgrade_color "$bullet") $(color $upgrade_inv_color " $upgrade_count ") $(color $upgrade_color "package$s can be upgraded")\n"
+echo -e "\n $(color $update_color "$bullet") $(color $update_inv_color " $update_count ") $(color $update_color "package$s can be upgraded")\n"

@@ -1,15 +1,14 @@
 #!/bin/bash
 
-# Load color palette file
-source /etc/update-motd.d/theme
+# Load style
+source "/etc/update-motd.d/default"
+source "$DEFAULT_THEME"
 
-# Fetch and organize information
-device_model="$(color $inv_title " $(tr -d '\0' < /sys/firmware/devicetree/base/model) ")"
-kernel_release="$(color $inv_muted " $(uname -sr) ")"
-username="$(color $inv_accent " $(logname) ")"
-host="$(color $accent @$(hostname))"
-login_date="$(color $muted "at $(date +"%a %b %d %Y, %I:%M %p %:z")")"
+# Fetch Information
+device_model="$(tr -d '\0' < /sys/firmware/devicetree/base/model)"
+kernel_release="$(uname -sr)"
+login_date="$(date +"%a %b %d %Y, %I:%M %p %:z")"
 
 # OUTPUT
-echo -e "\n $device_model$kernel_release"
-echo -e "\n $bullet Welcome $username to $host $login_date\n"
+echo -e "\n $(color $inv_title " $device_model ")$(color $inv_muted " $kernel_release ")"
+echo -e "\n $bullet Welcome $(color $inv_accent " $(logname) ") to $(color $accent @$(hostname)) $(color $muted "at $login_date")\n"

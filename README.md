@@ -6,32 +6,83 @@ This repository provides a collection of scripts for customizing the Message of 
 
 The MOTD scripts are designed to enhance the login experience by displaying useful system information in a styled format. This repository includes:
 
-- **`theme`**: Defines color palettes and styling options.
+- **`themes/`**: Defines color palettes and styling options.
 - **`10-welcome`**: Displays a personalized welcome message.
 - **`20-sysinfo`**: Shows detailed system information in a two-column layout.
 - **`30-update`**: Provides information about upgradable packages.
 
-## Configuration
+## Customizing
 
-### Colors
+### Themes
 
-The `theme` script defines the color palette used throughout the MOTD. You can customize the colors by editing the `theme` script. Here is an example of the color palette configuration:
+The `/etc/update-motd.d/themes` folder contains built-in theme files:
+
+- **`themes/raspi`**: Default theme with raspberry colors.
+- **`themes/contrast`**: High-contrast theme (black & white).
+- **`themes/nostyle`**: Plain text theme without styling.
+
+You can create your own theme by following the instructions in the Custom Theme section below.
+
+### Default Theme
+
+The `/etc/update-motd.d/default` script sets the default theme by sourcing the specified theme file from the `/etc/update-motd.d/themes` directory.
 
 ```bash
-# Color Palette
-accent="91"            # Red
-secondary="92"         # Green
-title="1"              # Bold
-muted="90"             # Gray
+#!/bin/bash
+
+# CUSTOM THEME DIRECTORY
+DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
 ```
 
-### Screenshots
+### Custom Theme
 
-#### Example MOTD
+To create a custom theme, follow these steps:
+
+1. **Create a New Theme File**
+
+   ```bash
+   sudo nano /etc/update-motd.d/themes/my-theme
+   ```
+
+2. **Add Your Custom Color Palette and Styles**
+
+   Example theme configuration:
+
+   ```bash
+   # Color Palette
+   accent="91"            # Red
+   secondary="92"         # Green
+   title="1"              # Bold
+   muted="90"             # Gray
+
+   # Background versions
+   inv_accent="101;30"    # Inverted Red
+   inv_secondary="102;30" # Inverted Green
+   inv_title="1;47;30"    # Inverted Bold
+   inv_muted="100;30"     # Inverted Gray
+
+   # Custom symbols
+   bullet="*"
+   colon=":"
+   ```
+
+3. **Set Your Custom Theme as Default**
+
+   Edit the `/etc/update-motd.d/default` file and update the `DEFAULT_THEME` variable to point to your new theme directory.
+
+   ```bash
+   sudo nano /etc/update-motd.d/default
+   ```
+
+   Change `DEFAULT_THEME` to your custom theme directory.
+
+## Screenshots
+
+### Example MOTD
 
 ![Screenshot](images/screenshot0.png)
 
-#### Package Updates
+### Package Updates
 
 ![Update](images/screenshot-update.png)
 
@@ -41,9 +92,10 @@ muted="90"             # Gray
 
 ### Quick Install (Recommended)
 
-To quickly set up the MOTD scripts, follow this steps:
+To quickly set up the MOTD scripts, follow these steps:
 
 1. **Clone the Repository and Run the Installer**
+
    ```bash
    git clone https://github.com/oezturk/update-motd-raspberrypi.git
    cd update-motd-raspberrypi
@@ -55,39 +107,34 @@ To quickly set up the MOTD scripts, follow this steps:
 To manually set up the MOTD scripts, follow these steps:
 
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/oezturk/update-motd-raspberrypi.git
    cd update-motd-raspberrypi
    ```
 
-2. **Remove older scripts in `/etc/update-motd.d/`**
+2. **Remove Older Scripts in `/etc/update-motd.d/`**
+
    ```bash
-   sudo rm /etc/update-motd.d/*
+   sudo rm -rf /etc/update-motd.d/*
    ```
 
 3. **Copy Scripts to `/etc/update-motd.d/`**
+
    ```bash
-   sudo cp update-motd.d/* /etc/update-motd.d/
+   sudo cp -r update-motd.d/* /etc/update-motd.d/
    ```
 
 4. **Set Permissions**
+
    ```bash
    sudo chmod +x /etc/update-motd.d/*
+   sudo chmod +r /etc/update-motd.d/themes/*
    ```
 
 ## Usage
 
 Once installed, the MOTD scripts will automatically update the login message when users access the system. The information displayed will reflect real-time system status and updates.
-
-## Customization
-
-You can modify the scripts to fit your needs:
-
-- **Adjust Colors**:
-  - Edit the `theme` script to change color settings.
-- **Update Information Displayed**:
-  - Modify `10-welcome`, `20-sysinfo`, and `30-update` scripts to include additional information or change formatting.
-  - Note: It is recommended to be cautious when editing these files. Ensure you understand the changes being made.
 
 ## License
 

@@ -58,13 +58,8 @@ if prompt_confirm "Do you wish to continue?"; then
     cp -r "$SOURCE_MOTD_DIR/"* "$TARGET_MOTD_DIR/" || error_exit "Failed to copy files to $TARGET_MOTD_DIR."
 
     # Set file permissions for all scripts and themes
-    for file in "$TARGET_MOTD_DIR"/*; do
-        if [[ "$file" == *theme* ]]; then
-            chmod +r "$file" || echo "Failed to set readable permission for $file."
-        else
-            chmod +x "$file" || echo "Failed to set executable permission for $file."
-        fi
-    done
+    chmod +x "$TARGET_MOTD_DIR/*" || echo "Failed to set executable permission for the scripts."
+    chmod +r "$TARGET_MOTD_DIR/themes/*" || echo "Failed to set readable permission for the themes."
 
     echo "Files have been successfully copied to $TARGET_MOTD_DIR and permissions set."
 else

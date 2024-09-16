@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# CREATE YOUR CUTOM THEME AS /etc/update-motd.d/themes/<theme-name>
+
+DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
+
 # Color          Foreground  Background
 # --------------------------------------
 # Black          30          40
@@ -25,22 +29,11 @@
 
 # FOR EXAMPLE: "1;3;31;44" Bold, Italic, Red Foreground, Blue Backgound
 
-# Color Palette
-accent="91"            # Default: "91"
-secondary="92"         # Default: "92"
-title="1"              # Default: "1"
-muted="90"             # Default: "90"
-
-# Background versions
-inv_accent="101;30"    # Default: "101;30"
-inv_secondary="102;30" # Default: "102;30"
-inv_title="1;47;30"    # Default: "1;47;30"
-inv_muted="100;30"     # Default: "100;30"
-
-# Custom symbols
-bullet="*"             # Default: "*"
-colon=":"              # Default: ":"
+#######################################
+#                                     #
+#   DO NOT EDIT ANYTHING BELOW THAT   #
+#                                     #
+#######################################
 
 # Color Function
-# Do not touch the function unless you know what you are doing.
 color() { echo "\e[$1m$2\e[0m"; }

@@ -1,0 +1,15 @@
+# Color Palette
+accent="0"
+secondary="0"
+title="1"
+muted="0"
+
+# Background versions
+inv_accent="47;30"
+inv_secondary="47;30"
+inv_title="1;47;30"
+inv_muted="47;30"
+
+# Custom symbols
+bullet="*"
+colon=":"
