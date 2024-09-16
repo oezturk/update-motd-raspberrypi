@@ -23,21 +23,24 @@
 # Italic    3
 # Underline 4
 
-######## Color Function #########
-color() { echo "\e[$1m$2\e[0m"; }
-######## DO NOT TOUCH IT ########
+# FOR EXAMPLE: "1;3;31;44" Bold, Italic, Red Foreground, Blue Backgound
 
 # Color Palette
-accent="91"
-secondary="92"
-title="1"
-muted="90"
+accent="91"            # Default: "91"
+secondary="92"         # Default: "92"
+title="1"              # Default: "1"
+muted="90"             # Default: "90"
 
-# Inverted version, manually assign
-inv_accent="101;97"
-inv_secondary="102;97"
-inv_title="1;47;90"
-inv_muted="100;37"
+# Background versions
+inv_accent="101;97"    # Default: "101;97"
+inv_secondary="102;97" # Default: "102;97"
+inv_title="1;47;90"    # Default: "1;47;90"
+inv_muted="100;37"     # Default: "100;37"
 
-# Bullet symbol
-bullet="*"
+# Custom symbols
+bullet="*"             # Default: "*"
+colon=":"              # Default: ":"
+
+# Color Function
+# Do not touch the function unless you know what you are doing.
+color() { echo "\e[$1m$2\e[0m"; }
