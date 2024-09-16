@@ -39,7 +39,20 @@ muted="90"             # Gray
 
 ## Installation
 
-To set up these scripts on your system, follow these steps:
+### Quick Install (Recommended)
+
+To quickly set up the MOTD scripts, follow this steps:
+
+1. **Clone the Repository and Run the Installer**
+   ```bash
+   git clone https://github.com/oezturk/update-motd-raspberrypi.git
+   cd update-motd-raspberrypi
+   sudo bash install.sh
+   ```
+
+### Manual Installation
+
+To manually set up the MOTD scripts, follow these steps:
 
 1. **Clone the Repository**
    ```bash
