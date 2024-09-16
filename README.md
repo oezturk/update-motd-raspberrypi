@@ -80,7 +80,7 @@ To create a custom theme, follow these steps:
 
 ### Example MOTD
 
-![Screenshot](images/screenshot0.png)
+![Screenshot](images/screenshot-raspi.png)
 
 ### Package Updates
 
