@@ -8,7 +8,7 @@ device_model="$(color $inv_title " $(tr -d '\0' < /sys/firmware/devicetree/base/
 kernel_release="$(color $inv_muted " $(uname -sr) ")"
 username="$(color $inv_accent " $(logname) ")"
 host="$(color $accent @$(hostname))"
-login_date="$(color $muted "at $(date | xargs -I {} date -d "{}" +"%a %b %d %Y, %I:%M %p")")"
+login_date="$(color $muted "at $(date +"%a %b %d %Y, %I:%M %p %:z")")"
 
 # OUTPUT
 echo -e "\n $device_model$kernel_release"

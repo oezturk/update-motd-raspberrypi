@@ -4,7 +4,7 @@
 source /etc/update-motd.d/theme
 
 # FIRST COLUMN
-last_login_info=$(last -n 1 -F $logname | head -n 1)
+last_login_info=$(last $logname -n 1 -F | head -n 1)
 last_login_date=$(echo "$last_login_info" | awk '{print $4, $5, $6, $7, $8}' | xargs -I {} date -d "{}" +"%a %b %d %Y, %I:%M %p")
 last_login_ip=$(echo "$last_login_info" | awk '{print $3}')
 info1="$(color $title "Last") $(color $muted "....")$(color $title "$colon") $(color $secondary "$last_login_date") $(color $muted "$bullet $last_login_ip")"
