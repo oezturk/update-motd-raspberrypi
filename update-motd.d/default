@@ -4,35 +4,12 @@
 
 DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
 
+ASCII_ART="true" # Enable ASCII art logo
+
 HOUR_FORMAT_24="false" # Switch from 12 (AM/PM) hour format to 24 hour format
 
 REFRESH_UPDATE_COUNT="true" # Fetches update list on every login to show real-time update count (takes about 1-2 seconds)
 
-
-# STYLING EXAMPLE: "1;3;31;44" Bold, Italic, Red Foreground, Blue Backgound
-
-# Color          Foreground  Background
-# --------------------------------------
-# Black          30          40
-# Red            31          41
-# Green          32          42
-# Yellow         33          43
-# Blue           34          44
-# Magenta        35          45
-# Cyan           36          46
-# Light Gray     37          47
-# Gray           90          100
-# Light Red      91          101
-# Light Green    92          102
-# Light Yellow   93          103
-# Light Blue     94          104
-# Light Magenta  95          105
-# Light Cyan     96          106
-# White          97          107
-
-# Bold      1
-# Italic    3
-# Underline 4
 
 #######################################
 #                                     #
@@ -45,11 +22,11 @@ color() { echo "\e[$1m$2\e[0m"; }
 
 # Fallback styles for missing theme definitions
 accent="0"
-secondary="0"
+second="0"
 title="1"
 muted="90"
 inv_accent="47;30"
-inv_secondary="47;30"
+inv_second="47;30"
 inv_title="1;47;30"
 inv_muted="100;30"
 bullet="*"

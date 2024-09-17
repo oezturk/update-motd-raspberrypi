@@ -51,13 +51,13 @@ To create a custom theme, follow these steps:
    ```bash
    # Color Palette
    accent="91"            # Red
-   secondary="92"         # Green
+   second="92"         # Green
    title="1"              # Bold
    muted="90"             # Gray
 
    # Background versions
    inv_accent="101;30"    # Inverted Red
-   inv_secondary="102;30" # Inverted Green
+   inv_second="102;30" # Inverted Green
    inv_title="1;47;30"    # Inverted Bold
    inv_muted="100;30"     # Inverted Gray
 

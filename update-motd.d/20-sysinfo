@@ -36,26 +36,38 @@ else
 fi
 
 # FIRST COLUMN
-info1="$(color $title "Last") $(color $muted "....")$(color $title "$colon") $(color $secondary "$last_login_date") $(color $muted "$bullet $last_login_ip")"
+info1="$(color $title "Last") $(color $muted "....")$(color $title "$colon") $(color $second "$last_login_date") $(color $muted "$bullet $last_login_ip")"
 
-info3="$(color $title "Uptime") $(color $muted "..")$(color $title "$colon") $(color $secondary "$up_time") $(color $muted "$bullet $up_date")"
+info3="$(color $title "Uptime") $(color $muted "..")$(color $title "$colon") $(color $second "$up_time") $(color $muted "$bullet $up_date")"
 
-info5="$(color $title "Disk") $(color $muted "....")$(color $title "$colon") $(color $secondary "$disk_usage") $(color $muted "$bullet $disk_free")"
+info5="$(color $title "Disk") $(color $muted "....")$(color $title "$colon") $(color $second "$disk_usage") $(color $muted "$bullet $disk_free")"
 
-info7="$(color $title "Memory") $(color $muted "..")$(color $title "$colon") $(color $secondary "$memory_usage") $(color $muted "$bullet $memory_free")"
+info7="$(color $title "Memory") $(color $muted "..")$(color $title "$colon") $(color $second "$memory_usage") $(color $muted "$bullet $memory_free")"
 
 # SECOND COLUMN
-info2="$(color $title "Temp") $(color $muted "....")$(color $title "$colon") $(color $secondary "$temperature°C")"
+info2="$(color $title "Temp") $(color $muted "....")$(color $title "$colon") $(color $second "$temperature°C")"
 
-info4="$(color $title "CPU") $(color $muted ".....")$(color $title "$colon") $(color $secondary "$cpu_usage% ($process_count)")"
+info4="$(color $title "CPU") $(color $muted ".....")$(color $title "$colon") $(color $second "$cpu_usage% ($process_count)")"
 
-info6="$(color $title "Users") $(color $muted "...")$(color $title "$colon") $(color $secondary "$user_count")"
+info6="$(color $title "Users") $(color $muted "...")$(color $title "$colon") $(color $second "$user_count")"
 
-info8="$(color $title "IP") $(color $muted "......")$(color $title "$colon") $(color $secondary "$ip")"
+info8="$(color $title "IP") $(color $muted "......")$(color $title "$colon") $(color $second "$ip")"
 
 # OUTPUT
-# OUTPUT
-echo -e "                                                            ${info2}\r   ${info1}"
-echo -e "                                                            ${info4}\r   ${info3}"
-echo -e "                                                            ${info6}\r   ${info5}"
-echo -e "                                                            ${info8}\r   ${info7}"
+if [[ "$ASCII_ART" == "true" ]]; then
+    echo -e "   $(color $second "   .~~.   .~~.   ")"
+    echo -e "   $(color $second "  '. \ ' ' / .'  ")   $info1"
+    echo -e "   $(color $accent "   .~ .~~~..~.   ")   $info3"
+    echo -e "   $(color $accent "  : .~.'~'.~. :  ")   $info5"
+    echo -e "   $(color $accent " ~ (   ) (   ) ~ ")   $info7"
+    echo -e "   $(color $accent "( : '~'.~.'~' : )")   $info2"
+    echo -e "   $(color $accent " ~ .~ (   ) ~. ~ ")   $info4"
+    echo -e "   $(color $accent "  (  : '~' :  )  ")   $info6"
+    echo -e "   $(color $accent "   '~ .~~~. ~'   ")   $info8"
+    echo -e "   $(color $accent "       '~'       ")"
+else
+    echo -e "                                                            ${info2}\r   ${info1}"
+    echo -e "                                                            ${info4}\r   ${info3}"
+    echo -e "                                                            ${info6}\r   ${info5}"
+    echo -e "                                                            ${info8}\r   ${info7}"
+fi
