@@ -4,7 +4,12 @@
 
 DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
 
+24_HOUR_FORMAT="false" # Switch from 12 (AM/PM) hour format to 24 hour format
+
 REFRESH_UPDATE_COUNT="true" # Fetches update list on every login to show real-time update count (takes about 1-2 seconds)
+
+
+# STYLING EXAMPLE: "1;3;31;44" Bold, Italic, Red Foreground, Blue Backgound
 
 # Color          Foreground  Background
 # --------------------------------------
@@ -28,8 +33,6 @@ REFRESH_UPDATE_COUNT="true" # Fetches update list on every login to show real-ti
 # Bold      1
 # Italic    3
 # Underline 4
-
-# FOR EXAMPLE: "1;3;31;44" Bold, Italic, Red Foreground, Blue Backgound
 
 #######################################
 #                                     #

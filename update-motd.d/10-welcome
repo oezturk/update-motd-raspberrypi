@@ -7,7 +7,13 @@ source "$DEFAULT_THEME"
 # Fetch Information
 device_model="$(tr -d '\0' < /sys/firmware/devicetree/base/model)"
 kernel_release="$(uname -sr)"
-login_date="$(date +"%a %b %d %Y, %I:%M %p %:z")"
+
+# Hour formatted date
+if [[ "$24_HOUR_FORMAT" == "true" ]]; then
+    login_date="$(date +"%a %b %d %Y, %H:%M %:z")"
+else
+    login_date="$(date +"%a %b %d %Y, %I:%M %p %:z")"
+fi
 
 # OUTPUT
 echo -e "\n $(color $inv_title " $device_model ")$(color $inv_muted " $kernel_release ")"
