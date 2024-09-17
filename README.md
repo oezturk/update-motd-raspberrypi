@@ -18,7 +18,7 @@ The MOTD scripts are designed to enhance the login experience by displaying usef
 The `/etc/update-motd.d/themes` folder contains built-in theme files:
 
 - **`themes/raspi`**: Default theme with raspberry colors.
-- **`themes/contrast`**: High-contrast theme (black & white).
+- **`themes/gray`**:  Theme with only white shades (black & white).
 - **`themes/nostyle`**: Plain text theme without styling.
 
 You can create your own theme by following the instructions in the Custom Theme section below.
