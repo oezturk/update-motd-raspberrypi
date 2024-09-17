@@ -9,7 +9,7 @@ device_model="$(tr -d '\0' < /sys/firmware/devicetree/base/model)"
 kernel_release="$(uname -sr)"
 
 # Hour formatted date
-if [[ "$24_HOUR_FORMAT" == "true" ]]; then
+if [[ "$HOUR_FORMAT_24" == "true" ]]; then
     login_date="$(date +"%a %b %d %Y, %H:%M %:z")"
 else
     login_date="$(date +"%a %b %d %Y, %I:%M %p %:z")"

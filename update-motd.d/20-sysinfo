@@ -6,7 +6,7 @@ source "$DEFAULT_THEME"
 
 # Fetch Information
 last_login_info=$(last $logname -n 1 -F | head -n 1)
-last_login_ip=$($last_login_info | awk '{print $3}')
+last_login_ip=$(echo "$last_login_info" | awk '{print $3}')
 
 up_time="$(uptime -p | sed -e 's/^up //' -e 's/hour*/hr/' -e 's/minute*/min/' -e 's/,//g')"
 up_date="$(uptime -s)"
@@ -27,11 +27,11 @@ user_count="$(users | wc -w)"
 ip="$(hostname -I)"
 
 # Hour formatted date
-if [[ "$24_HOUR_FORMAT" == "true" ]]; then
-    last_login_date=$($last_login_info | awk '{print $4, $5, $6, $7, $8}' | xargs -I {} date -d "{}" +"%b %d %Y, %H:%M")
+if [[ "$HOUR_FORMAT_24" == "true" ]]; then
+    last_login_date=$(echo "$last_login_info" | awk '{print $4, $5, $6, $7, $8}' | xargs -I {} date -d "{}" +"%b %d %Y, %H:%M")
     up_date="$(date -d "$up_date" +"%b %d %Y, %H:%M")"
 else
-    last_login_date=$($last_login_info | awk '{print $4, $5, $6, $7, $8}' | xargs -I {} date -d "{}" +"%b %d %Y, %I:%M %p")
+    last_login_date=$(echo "$last_login_info" | awk '{print $4, $5, $6, $7, $8}' | xargs -I {} date -d "{}" +"%b %d %Y, %I:%M %p")
     up_date="$(date -d "$up_date" +"%b %d %Y, %I:%M %p")"
 fi
 

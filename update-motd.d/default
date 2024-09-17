@@ -4,7 +4,7 @@
 
 DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
 
-24_HOUR_FORMAT="false" # Switch from 12 (AM/PM) hour format to 24 hour format
+HOUR_FORMAT_24="false" # Switch from 12 (AM/PM) hour format to 24 hour format
 
 REFRESH_UPDATE_COUNT="true" # Fetches update list on every login to show real-time update count (takes about 1-2 seconds)
 
