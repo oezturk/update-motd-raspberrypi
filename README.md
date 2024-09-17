@@ -1,15 +1,46 @@
 # MOTD Scripts
 
-This repository provides a collection of scripts for customizing the Message of the Day (MOTD) on Unix-based systems. These scripts offer dynamic updates and visually appealing presentations of system information upon SSH connection or system access.
+This repository provides a collection of scripts for customizing the Message of the Day (MOTD) on Unix-based systems. These scripts enhance the login experience by displaying ASCII art and other useful system information upon SSH connection or system access.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Screenshots](#screenshots)
+- [Customizing](#customizing)
+  - [Themes](#themes)
+  - [Customizing Options](#customizing-options)
+  - [Custom Theme](#custom-theme)
+- [Installation](#installation)
+  - [Quick Install (Recommended)](#quick-install-recommended)
+  - [Manual Installation](#manual-installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
 
 ## Overview
 
-The MOTD scripts are designed to enhance the login experience by displaying useful system information in a styled format. This repository includes:
+The MOTD scripts include:
 
-- **`themes/`**: Defines color palettes and styling options.
+- **`default`**: Main file defining custom options and settings.
+- **`themes/`**: Directory for color palettes and styles.
 - **`10-welcome`**: Displays a personalized welcome message.
 - **`20-sysinfo`**: Shows detailed system information in a two-column layout.
 - **`30-update`**: Provides information about upgradable packages.
+
+## Screenshots
+
+### Example MOTD
+
+![Screenshot](images/screenshot-raspi-ascii.png)
+*Example of ASCII art logo in the MOTD.*
+
+![Screenshot](images/screenshot-raspi.png)
+*Example of the standard MOTD display.*
+
+#### Package Updates
+
+![Update](images/screenshot-update.png)
+*Example of the update notification showing the number of upgradable packages.*
 
 ## Customizing
 
@@ -18,25 +49,25 @@ The MOTD scripts are designed to enhance the login experience by displaying usef
 The `/etc/update-motd.d/themes` folder contains built-in theme files:
 
 - **`themes/raspi`**: Default theme with raspberry colors.
-- **`themes/gray`**:  Theme with only white shades (black & white).
+- **`themes/gray`**: Theme with only white shades (black & white).
 - **`themes/nostyle`**: Plain text theme without styling.
 
-You can create your own theme by following the instructions in the Custom Theme section below.
+To create your own theme, follow the Custom Theme section below.
 
-### Default Theme
+### Customizing Options
 
-The `/etc/update-motd.d/default` script sets the default theme by sourcing the specified theme file from the `/etc/update-motd.d/themes` directory.
+Set customizing options in the `/etc/update-motd.d/default` script.
 
 ```bash
-#!/bin/bash
-
-# CUSTOM THEME DIRECTORY
-DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
+DEFAULT_THEME="/etc/update-motd.d/themes/raspi" # Theme directory
+ASCII_ART="true" # Enable ASCII art logo
+HOUR_FORMAT_24="false" # Enable 24-hour format
+# and other options...
 ```
 
 ### Custom Theme
 
-To create a custom theme, follow these steps:
+To create a custom theme:
 
 1. **Create a New Theme File**
 
@@ -51,13 +82,13 @@ To create a custom theme, follow these steps:
    ```bash
    # Color Palette
    accent="91"            # Red
-   second="92"         # Green
+   second="92"            # Green
    title="1"              # Bold
    muted="90"             # Gray
 
    # Background versions
    inv_accent="101;30"    # Inverted Red
-   inv_second="102;30" # Inverted Green
+   inv_second="102;30"    # Inverted Green
    inv_title="1;47;30"    # Inverted Bold
    inv_muted="100;30"     # Inverted Gray
 
@@ -76,23 +107,11 @@ To create a custom theme, follow these steps:
 
    Change `DEFAULT_THEME` to your custom theme directory.
 
-## Screenshots
-
-### Example MOTD
-
-![Screenshot](images/screenshot-raspi.png)
-
-### Package Updates
-
-![Update](images/screenshot-update.png)
-
-*Example of the update notification showing the number of upgradable packages.*
-
 ## Installation
 
 ### Quick Install (Recommended)
 
-To quickly set up the MOTD scripts, follow these steps:
+To quickly set up the MOTD scripts:
 
 1. **Clone the Repository and Run the Installer**
 
@@ -104,7 +123,7 @@ To quickly set up the MOTD scripts, follow these steps:
 
 ### Manual Installation
 
-To manually set up the MOTD scripts, follow these steps:
+To manually set up the MOTD scripts:
 
 1. **Clone the Repository**
 
@@ -134,7 +153,7 @@ To manually set up the MOTD scripts, follow these steps:
 
 ## Usage
 
-Once installed, the MOTD scripts will automatically update the login message when users access the system. The information displayed will reflect real-time system status and updates.
+Once installed, the MOTD scripts will automatically update the login message when users access the system. The information displayed will reflect real-time system status and updates. You can take a look at the [Customizing](#customizing) section to personalize the experience. 
 
 ## License
 
