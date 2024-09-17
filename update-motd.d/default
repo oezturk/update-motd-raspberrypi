@@ -37,3 +37,15 @@ DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
 
 # Color Function
 color() { echo "\e[$1m$2\e[0m"; }
+
+# Fallback styles for missing theme definitions
+accent="0"
+secondary="0"
+title="1"
+muted="0"
+inv_accent="47;30"
+inv_secondary="47;30"
+inv_title="1;47;30"
+inv_muted="47;30"
+bullet="*"
+colon=":"
