@@ -4,6 +4,8 @@
 
 DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
 
+REFRESH_UPDATE_COUNT="true" # Fetches update list on every login to show real-time update count (takes about 1-2 seconds)
+
 # Color          Foreground  Background
 # --------------------------------------
 # Black          30          40

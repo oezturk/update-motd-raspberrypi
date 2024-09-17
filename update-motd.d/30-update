@@ -5,24 +5,26 @@ source "/etc/update-motd.d/default"
 source "$DEFAULT_THEME"
 
 # Fetch Information
-update_count="$(apt-get --just-print upgrade | grep -c "^Inst")"
+if [[ "$REFRESH_UPDATE_COUNT" == "true" ]]; then
+    apt update -qqq
+fi
+upgrade_count=$(apt list --upgradable 2>/dev/null | grep -c 'upgradable')
 
-# Default colors
-update_color="$muted"
-update_inv_color="$inv_muted"
-
+# Defaults
+upgrade_color="$muted"
+upgrade_inv_color="$inv_muted"
 s="s"
 
-# Adjust colors and pluralization and colors if there are upgradable packages
-if [ "$update_count" -gt 0 ]; then
+# Check if there are updates
+if [ "$upgrade_count" -gt 0 ]; then
 
-    update_color="$accent"
-    update_inv_color="$inv_accent"
+    upgrade_color="$accent"
+    upgrade_inv_color="$inv_accent"
 
-    if [ "$update_count" -eq 1 ]; then
+    if [ "$upgrade_count" -eq 1 ]; then
         s=""
     fi
 fi
 
 # OUTPUT
-echo -e "\n $(color $update_color "$bullet") $(color $update_inv_color " $update_count ") $(color $update_color "package$s can be upgraded")\n"
+echo -e "\n $(color $upgrade_color "$bullet") $(color $upgrade_inv_color " $upgrade_count ") $(color $upgrade_color "package$s can be upgraded")\n"
