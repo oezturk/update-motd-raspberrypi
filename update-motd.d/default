@@ -3,13 +3,9 @@
 # CREATE YOUR CUTOM THEME AS /etc/update-motd.d/themes/<theme-name>
 
 DEFAULT_THEME="/etc/update-motd.d/themes/raspi"
-
 ASCII_ART="true" # Enable ASCII art logo
-
 HOUR_FORMAT_24="false" # Switch from 12 (AM/PM) hour format to 24 hour format
-
 REFRESH_UPDATE_COUNT="true" # Fetches update list on every login to show real-time update count (takes about 1-2 seconds)
-
 
 #######################################
 #                                     #
@@ -19,6 +15,13 @@ REFRESH_UPDATE_COUNT="true" # Fetches update list on every login to show real-ti
 
 # Color Function
 color() { echo "\e[$1m$2\e[0m"; }
+
+# Date Format
+if [[ "$HOUR_FORMAT_24" == "true" ]]; then
+    date_format="%b %d %Y, %H:%M"
+else
+    date_format="%b %d %Y, %I:%M %p"
+fi
 
 # Fallback styles for missing theme definitions
 accent="0"
