@@ -58,8 +58,8 @@ if [[ "$ASCII_ART" == "true" ]]; then
     echo -e "   $(color $accent "   '~ .~~~. ~'   ")   $info8"
     echo -e "   $(color $accent "       '~'       ")"
 else
-    echo -e "                                                            ${info2}\r   ${info1}"
-    echo -e "                                                            ${info4}\r   ${info3}"
-    echo -e "                                                            ${info6}\r   ${info5}"
-    echo -e "                                                            ${info8}\r   ${info7}"
+    echo -e "                                                              ${info2}\r   ${info1}"
+    echo -e "                                                              ${info4}\r   ${info3}"
+    echo -e "                                                              ${info6}\r   ${info5}"
+    echo -e "                                                              ${info8}\r   ${info7}"
 fi
