@@ -14,7 +14,9 @@ REFRESH_UPDATE_COUNT="true" # Fetches update list on every login to show real-ti
 #######################################
 
 # Color Function
-color() { echo "\e[$1m$2\e[0m"; }
+color() {
+    echo "\e[$1m$2\e[0m";
+}
 
 # Date Format
 if [[ "$HOUR_FORMAT_24" == "true" ]]; then
